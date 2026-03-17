@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace locations.divisions
 {
+    using Neighborhood = Division;
+    using District = Division;
+
     public class Division
     {
         public string name;
@@ -17,6 +20,11 @@ namespace locations.divisions
             subdivisions = subdivisions_;
             if (subdivisions == null)
                 subdivisions = new List<Division>();
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return name;
         }
     }
 }

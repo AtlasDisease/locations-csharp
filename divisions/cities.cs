@@ -21,11 +21,11 @@ namespace locations.divisions
     {
         NONE,
         SEAT,
-        CITY
+        CAPITAL
     }
 
 
-    public class City: Division
+    public class City: Division, IFormattable
     {
         public CityTypes type;
         public AdministrativeTypes adminType;
@@ -36,6 +36,56 @@ namespace locations.divisions
             type = type_;
             adminType = adminType_;
             population = population_;
+        }
+
+        new public string ToString(string format, IFormatProvider formatProvider)
+        {
+            if (format.Contains("F") || format.Contains("O"))
+            {
+                if (adminType != AdministrativeTypes.NONE)
+                {
+                    if (format.Contains("-"))
+                        return $"The {adminType} of {name}";
+                    return $"The {adminType} of {name}";
+                }
+                return $"The {type} of {name}";
+            }
+            return name;
+        }
+
+        public static bool operator ==(City city1, City city2)
+        {
+            return city1.type == city2.type;
+        }
+
+        public static bool operator !=(City city1, City city2)
+        {
+            return !(city1.type == city2.type);
+        }
+
+        public static bool operator >(City city1, City city2)
+        {
+            return city1.type >= city2.type;
+        }
+
+        public static bool operator <(City city1, City city2)
+        {
+            return city1.type <= city2.type;
+        }
+
+        public bool incorporated()
+        {
+            return type >= CityTypes.TOWN;
+        }
+
+        public bool abandoned()
+        {
+            return type < CityTypes.COMMUNITY && type != CityTypes.UNKNOWN;
+        }
+
+        public bool historical()
+        {
+            return type == CityTypes.SITE;
         }
     }
 }

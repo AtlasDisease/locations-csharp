@@ -25,7 +25,7 @@ namespace locations
 
             district = new District("Downtown");
 
-            city = new City("Austin", CityTypes.CITY, AdministrativeTypes.SEAT | AdministrativeTypes.CITY, null, 1_007_435);
+            city = new City("Austin", CityTypes.CITY, AdministrativeTypes.SEAT | AdministrativeTypes.CITY, population_: 1_007_435);
             city.subdivisions.Add(district);
 
             city1 = new City("Waco", CityTypes.CITY, AdministrativeTypes.SEAT);
@@ -55,7 +55,7 @@ namespace locations
             supercluster = new Supercluster("Laniakea");
             supercluster.subdivisions.Add(localgroup);
 
-            universe = new Universe("Universe 1");
+            universe = new Universe("Universe");
             universe.subdivisions.Add(supercluster);
 
             Console.Clear();
