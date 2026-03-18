@@ -9,7 +9,7 @@ namespace locations.divisions
 {
     class District: Division
     {
-        public District(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public District(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
             name = name_;
         }

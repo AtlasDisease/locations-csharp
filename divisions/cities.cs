@@ -31,26 +31,11 @@ namespace locations.divisions
         public AdministrativeTypes adminType;
         int population;
 
-        public City(string name_, CityTypes type_ = CityTypes.UNKNOWN, AdministrativeTypes adminType_ = AdministrativeTypes.NONE, List<Division> subdivisions_ = null, int population_ = 0): base(name_, subdivisions_)
+        public City(string name_, CityTypes type_ = CityTypes.UNKNOWN, AdministrativeTypes adminType_ = AdministrativeTypes.NONE, List<Division>? subdivisions_ = null, int population_ = 0): base(name_, subdivisions_)
         {
             type = type_;
             adminType = adminType_;
             population = population_;
-        }
-
-        new public string ToString(string format, IFormatProvider formatProvider)
-        {
-            if (format.Contains("F") || format.Contains("O"))
-            {
-                if (adminType != AdministrativeTypes.NONE)
-                {
-                    if (format.Contains("-"))
-                        return $"The {adminType} of {name}";
-                    return $"The {adminType} of {name}";
-                }
-                return $"The {type} of {name}";
-            }
-            return name;
         }
 
         public static bool operator ==(City city1, City city2)
@@ -71,6 +56,24 @@ namespace locations.divisions
         public static bool operator <(City city1, City city2)
         {
             return city1.type <= city2.type;
+        }
+
+        public override string ToString(string? format, IFormatProvider? formatProvider)
+        {
+            if (format == null)
+                format = string.Empty;
+
+            if (format.Contains("F") || format.Contains("O"))
+            {
+                if (adminType != AdministrativeTypes.NONE)
+                {
+                    if (format.Contains("-"))
+                        return $"The {adminType} of {name}";
+                    return $"The {adminType} of {name}";
+                }
+                return $"The {type} of {name}";
+            }
+            return name;
         }
 
         public bool incorporated()

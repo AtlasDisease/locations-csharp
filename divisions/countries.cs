@@ -11,7 +11,7 @@ namespace locations.divisions
         int max_capital_num;
         string prefix;
 
-        public Country(string name_, List<Division> subdivisions_ = null, int max_capital_num_ = 1, string prefix_ = ""): base(name_, subdivisions_)
+        public Country(string name_, List<Division>? subdivisions_ = null, int max_capital_num_ = 1, string prefix_ = ""): base(name_, subdivisions_)
         {
             max_capital_num = max_capital_num_;
             prefix = prefix_;
@@ -32,10 +32,10 @@ namespace locations.divisions
             return subdivisions.Cast<City>().Where(div => div.adminType.HasFlag(AdministrativeTypes.CAPITAL));
         }
 
-        public void add_city(City city, County county)
+        /*public void add_city(City city, County county)
         {
             county.add_city(city);
-        }
+        }*/
 
         public void add_county(County county)
         {

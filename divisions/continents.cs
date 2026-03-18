@@ -8,8 +8,13 @@ namespace locations.divisions
 {
     class Continent: Division
     {
-        public Continent(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public Continent(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
+        }
+
+        public void add_country(Country country)
+        {
+            subdivisions.Add(country);
         }
     }
 }

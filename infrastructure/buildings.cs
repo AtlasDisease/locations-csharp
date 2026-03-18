@@ -11,12 +11,10 @@ namespace locations.infrastructure
         public string name;
         public List<Building> subdivisions;
 
-        public Building(string name_, List<Building> subdivisions_ = null)
+        public Building(string name_, List<Building>? subdivisions_ = null)
         {
             name = name_;
-            subdivisions = subdivisions_;
-            if (subdivisions == null)
-                subdivisions = new List<Building>();
+            subdivisions = subdivisions_ ?? new List<Building>();
         }
 
         public string ToString(string format, IFormatProvider formatProvider)

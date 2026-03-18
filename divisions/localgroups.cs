@@ -8,8 +8,13 @@ namespace locations.divisions
 {
     class LocalGroup: Division
     {
-        public LocalGroup(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public LocalGroup(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
+        }
+
+        public void add_galaxy(Galaxy galaxy)
+        {
+            subdivisions.Add(galaxy);
         }
     }
 }

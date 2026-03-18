@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace locations.divisions
 {
-    using Parish = County; // French version of county
-    using Shire = County; // English (UK) version of county
-    using Oblast = County; //Russian version of county
-    using Borough = County; //Alaskan version of county
+    //using Parish = County; // French version of county
+    //using Shire = County; // English (UK) version of county
+    //using Oblast = County; //Russian version of county
+    //using Borough = County; //Alaskan version of county
 
     public class County: Division
     {
         int max_seat_num;
 
-        public County(string name_, List<Division> subdivisions_ = null, int max_seat_num_ = 1): base(name_, subdivisions_)
+        public County(string name_, List<Division>? subdivisions_ = null, int max_seat_num_ = 1): base(name_, subdivisions_)
         {
             max_seat_num = max_seat_num_;
         }
 
-        public bool organized()
+        public IEnumerable<City> cities()
         {
-            return seat() != null;
+            return subdivisions.Cast<City>();
         }
 
-        public City seat()
+        public bool organized()
+        {
+            return seat() is not null;
+        }
+
+        public City? seat()
         {
             return seats().FirstOrDefault();
         }

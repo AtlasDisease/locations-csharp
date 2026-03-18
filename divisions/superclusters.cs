@@ -8,8 +8,13 @@ namespace locations.divisions
 {
     class Supercluster: Division
     {
-        public Supercluster(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public Supercluster(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
+        }
+
+        public void add_local_group(LocalGroup localgroup)
+        {
+            subdivisions.Add(localgroup);
         }
     }
 }

@@ -8,8 +8,13 @@ namespace locations.divisions
 {
     class PlanetarySystem: Division
     {
-        public PlanetarySystem(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public PlanetarySystem(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
+        }
+
+        public void add_planet(Planet planet)
+        {
+            subdivisions.Add(planet);
         }
     }
 }

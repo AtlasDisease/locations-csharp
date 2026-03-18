@@ -8,8 +8,13 @@ namespace locations.divisions
 {
     class Universe: Division
     {
-        public Universe(string name_, List<Division> subdivisions_ = null): base(name_, subdivisions_)
+        public Universe(string name_, List<Division>? subdivisions_ = null): base(name_, subdivisions_)
         {
+        }
+
+        public void add_supercluster(Supercluster supercluster)
+        {
+            subdivisions.Add(supercluster);
         }
     }
 }

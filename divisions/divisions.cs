@@ -12,19 +12,22 @@ namespace locations.divisions
     public class Division
     {
         public string name;
-        public List<Division> subdivisions;
+        protected List<Division> subdivisions;
 
-        public Division(string name_, List<Division> subdivisions_ = null)
+        public Division(string name_, List<Division>? subdivisions_ = null)
         {
             name = name_;
-            subdivisions = subdivisions_;
-            if (subdivisions == null)
-                subdivisions = new List<Division>();
+            subdivisions = subdivisions_ ?? new List<Division>();
         }
 
-        public string ToString(string format, IFormatProvider formatProvider)
+        public virtual string ToString(string? format, IFormatProvider? formatProvider)
         {
             return name;
+        }
+
+        public virtual void add_subdivision(Division division)
+        {
+            subdivisions.Add(division);
         }
     }
 }
